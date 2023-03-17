@@ -13,7 +13,7 @@ In it I will put all activities that are arising from classes. </p>
   
 ## 2 - Choose a class folder
 
-## 3 - Install the dependencies from the chosen folder and start the project
+## 3 - Install the dependencies from the chosen folder
 
 ## 3.1 - Install dependencies:
        - npm install
