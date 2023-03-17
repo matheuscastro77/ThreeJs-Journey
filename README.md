@@ -3,10 +3,6 @@
 <p> This repository is about the Three.js Journey course.
 In it I will put all activities that are arising from classes. </p>
 
-## Live projects
-
-<p> You can access all projects/activities made by me through the links below </p>
-
 ## Course link
 [Link](https://threejs-journey.com/#)
 
