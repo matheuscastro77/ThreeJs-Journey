@@ -257,6 +257,7 @@ house.add(bush1, bush2, bush3, bush4)
 const floor = new THREE.Mesh(
     new THREE.CircleGeometry(15, 150),
     new THREE.MeshStandardMaterial({ 
+        side: THREE.DoubleSide,
         map: grassColorTexture,
         aoMap: grassAmbientOcclusionTexture,
         normalMap: grassNormalTexture,
@@ -284,8 +285,8 @@ for (let i = 0; i < 60; i++) {
     const z = Math.cos(angle) * radius
 
     const grave = new THREE.Mesh(graveGeometry, graveMaterial)
-    grave.position.set(x, 0.1, z)
-    grave.rotation.y = (Math.random()) * 2
+    grave.position.set(x, 0.3, z)
+    grave.rotation.y = (Math.random())
     grave.rotation.z = (Math.random()) - 0.5
     grave.castShadow = true
     graves.add(grave)
