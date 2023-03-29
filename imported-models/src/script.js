@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as dat from 'lil-gui'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
 /**
  * Base
@@ -13,6 +15,72 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+/**
+ * Models
+ */
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('/draco/')
+
+const gltfLoader = new GLTFLoader()
+gltfLoader.setDRACOLoader(dracoLoader)
+
+let mixer = null
+
+gltfLoader.load(
+    '/models/Fox/glTF/Fox.gltf',
+    (gltf) => {
+
+        gltf.scene.scale.set(0.025, 0.025, 0.025)
+        gltf.scene.position.set(0.25, 0, -2)
+
+        // Animations
+
+        mixer = new THREE.AnimationMixer(gltf.scene)
+        const action = mixer.clipAction(gltf.animations[1])
+
+        action.play()
+
+        // 1 way
+
+        scene.add(gltf.scene)
+
+        // 2 way
+
+        // while(gltf.scene.children.length > 0){
+        //     scene.add(gltf.scene.children[0])
+        // }
+
+        // 3 way
+
+        // const children = [...gltf.scene.children]
+
+        // for (const child of children) {
+        //     scene.add(child)
+        // }
+    }
+)
+
+gltfLoader.load(
+    '/models/Duck/glTF/Duck.gltf',
+    (gltf) => {
+
+        gltf.scene.position.set(0, 0, 1)
+        scene.add(gltf.scene)
+
+    }
+)
+
+gltfLoader.load(
+    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    (gltf) => {
+
+        gltf.scene.scale.set(2, 2, 2)
+        gltf.scene.position.set(0, 0, 2.5)
+        scene.add(gltf.scene)
+
+    }
+)
 
 /**
  * Floor
@@ -54,8 +122,7 @@ const sizes = {
     height: window.innerHeight
 }
 
-window.addEventListener('resize', () =>
-{
+window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
@@ -74,7 +141,7 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(2, 2, 2)
+camera.position.set(3, 3, 2)
 scene.add(camera)
 
 // Controls
@@ -99,11 +166,16 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 const clock = new THREE.Clock()
 let previousTime = 0
 
-const tick = () =>
-{
+const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
+
+    // Update Mixer
+    // if (mixer != null) {
+    //     mixer?.update(deltaTime)
+    // }
+    mixer?.update(deltaTime)
 
     // Update controls
     controls.update()
