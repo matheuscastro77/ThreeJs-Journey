@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 /**
  * Base
@@ -37,6 +38,21 @@ object3.position.x = 2
 scene.add(object1, object2, object3)
 
 /**
+ * Raycaster
+ */
+const raycaster = new THREE.Raycaster()
+
+// const rayOrigin = new THREE.Vector3(-3, 0, 0)
+// const rayDirection = new THREE.Vector3(10, 0, 0)
+// rayDirection.normalize()
+
+// raycaster.set(rayOrigin, rayDirection)
+
+// const intersect = raycaster.intersectObject(object2)
+
+// const intersects = raycaster.intersectObjects([object1, object2, object3])
+
+/**
  * Sizes
  */
 const sizes = {
@@ -44,8 +60,7 @@ const sizes = {
     height: window.innerHeight
 }
 
-window.addEventListener('resize', () =>
-{
+window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
@@ -57,6 +72,37 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
+/**
+ * Mouse
+ */
+const mouse = new THREE.Vector2()
+
+window.addEventListener('mousemove', (e) => {
+
+    mouse.x = e.clientX / sizes.width * 2 - 1
+    mouse.y = - (e.clientY / sizes.height) * 2 + 1
+})
+
+window.addEventListener('click', () => {
+    if (currentIntersect != null) {
+
+        if (currentIntersect.object === object1) {
+
+            console.log('click on a sphere 1');
+
+        } else if (currentIntersect.object === object2) {
+
+            console.log('click on a sphere 2');
+
+        } else if (currentIntersect.object === object3) {
+
+            console.log('click on a sphere 3');
+
+        }
+
+    }
 })
 
 /**
@@ -81,15 +127,105 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 /**
+ * Model
+ */
+
+const gltfLoader = new GLTFLoader()
+
+let model = null
+
+gltfLoader.load(
+    './models/Duck/glTF-Binary/Duck.glb',
+    (gltf) => {
+        model = gltf.scene
+        model.position.y = -1.2
+        scene.add(model)
+    }
+)
+
+/**
+ * Light
+ */
+// Ambient Light
+const ambientLight = new THREE.AmbientLight('#ffffff', 0.3)
+scene.add(ambientLight)
+
+const directionalLight = new THREE.DirectionalLight('#ffffff', 0.7)
+directionalLight.position.set(1, 2, 3)
+scene.add(directionalLight)
+
+/**
  * Animate
  */
 const clock = new THREE.Clock()
 
-const tick = () =>
-{
+let currentIntersect = null
+
+const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
-    // Update controls
+    // Animate objects
+
+    object1.position.y = Math.sin(elapsedTime * 0.4) * 1.5
+    object2.position.y = Math.sin(elapsedTime * 0.8) * 1.5
+    object3.position.y = Math.sin(elapsedTime * 1.2) * 1.58
+
+    // Cast a ray
+    raycaster.setFromCamera(mouse, camera)
+
+    // const rayOrigin = new THREE.Vector3(-3, 0, 0)
+    // const rayDirection = new THREE.Vector3(1, 0, 0)
+    // rayDirection.normalize()
+
+    // raycaster.set(rayOrigin, rayDirection)
+
+    const objectsToTest = [object1, object2, object3]
+    const intersects = raycaster.intersectObjects(objectsToTest)
+
+    for (const object of objectsToTest) {
+
+        object.material.color.set('red')
+    }
+
+    for (const intersect of intersects) {
+
+        intersect.object.material.color.set('blue')
+    }
+
+    if (intersects.length) {
+
+        if (currentIntersect === null) {
+
+            console.log('mouse enter');
+
+        }
+        currentIntersect = intersects[0]
+
+    } else {
+
+        if (currentIntersect) {
+
+            console.log('mouse leave');
+
+        }
+
+        currentIntersect = null
+
+    }
+
+    if (model) {
+        const modelIntersects = raycaster.intersectObject(model)
+
+        if (modelIntersects.length) {
+            model.scale.set(1.5, 1.5, 1.5)
+        } else {
+            model.scale.set(1, 1, 1)
+        }
+    }
+
+
+
+    // Update contr1.2
     controls.update()
 
     // Render
