@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 export default function Fox(props) {
   const fox = useGLTF("./Fox/glTF/Fox.gltf");
   const animations = useAnimations(fox.animations, fox.scene);
+  console.log(fox);
 
   const { animation } = useControls({
     animation: { options: animations.names }
