@@ -42,9 +42,9 @@ export default function Experience() {
   });
 
   const collistionEnter = () => {
-    // hitSount.currentTime = 0
-    // hitSount.volume = Math.random()
-    // hitSount.play()
+    hitSount.currentTime = 0
+    hitSount.volume = Math.random()
+    hitSount.play()
   };
 
   const hambuger = useGLTF("./hamburger.glb");
@@ -91,7 +91,7 @@ export default function Experience() {
           restitution={1}
           friction={0.7}
           colliders={false}
-          // onCollisionEnter={ collistionEnter }
+          onCollisionEnter={ collistionEnter }
           // onCollisionExit={ () => {console.log('exit')} }
         >
           <mesh castShadow onClick={cubeJump}>
