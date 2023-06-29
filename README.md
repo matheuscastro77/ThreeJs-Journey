@@ -115,4 +115,4 @@ You can find the files for each project in this same repository or in a separate
        - npm install
       
 ## 4 - Starting the project
-	- npm run start
+	- npm run dev
