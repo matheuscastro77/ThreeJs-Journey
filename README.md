@@ -62,6 +62,27 @@ You can find the files for each project in this same repository or in a separate
 
 [Modified Materials](https://modified-materials-nine.vercel.app/)
 
+
+
+https://3d-text-with-r3f.vercel.app/
+https://adding-details-to-the-scene.vercel.app/
+https://create-a-game-with-r3f-iota.vercel.app/
+https://debug-a-r3f-application.vercel.app/
+https://environment-and-staging-with-r3f.vercel.app/
+https://mouse-events-with-r3f.vercel.app/
+https://mixing-html-and-webgl-lemon.vercel.app/
+https://load-models-with-r3f.vercel.app/
+https://first-r3f-application.vercel.app/
+https://portal-scene-with-r3f-five.vercel.app/
+https://physics-with-r3f-one.vercel.app/
+https://importing-and-optimizing-the-scene-henna.vercel.app/
+https://fun-and-simple-portfolio-with-r3f.vercel.app/
+https://performance-tips-sandy.vercel.app/
+https://post-processing-lemon.vercel.app/
+https://intro-and-loading-progress-olive.vercel.app/
+https://r3f-drei-black.vercel.app/
+https://intro-and-loading-progress-olive.vercel.app/
+
 ## Course link
 [Link](https://threejs-journey.com/#)
 
