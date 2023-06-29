@@ -62,6 +62,43 @@ You can find the files for each project in this same repository or in a separate
 
 [Modified Materials](https://modified-materials-nine.vercel.app/)
 
+[Post Processing](https://post-processing-lemon.vercel.app/)
+
+[Performance Tips](https://performance-tips-sandy.vercel.app/)
+
+[Intro and Loading Progress](https://intro-and-loading-progress-olive.vercel.app/)
+
+[Mixing HTML and WebGL](https://mixing-html-and-webgl-lemon.vercel.app/)
+
+[Importing and Optimizing the Scene](https://importing-and-optimizing-the-scene-henna.vercel.app/)
+
+[Adding Details to the Scene](https://adding-details-to-the-scene.vercel.app/)
+
+[First R3F Application](https://first-r3f-application.vercel.app/)
+
+[Drei R3F](https://r3f-drei-black.vercel.app/)
+
+[Debug with R3F](https://debug-a-r3f-application.vercel.app/)
+
+[Environment and Staging](https://environment-and-staging-with-r3f.vercel.app/)
+
+[Load Models with R3F](https://load-models-with-r3f.vercel.app/)
+
+[3D Text with R3F](https://3d-text-with-r3f.vercel.app/)
+
+[Portal Scene with R3F](https://portal-scene-with-r3f-five.vercel.app/)
+
+[Mouse Events with R3F](https://mouse-events-with-r3f.vercel.app/)
+
+[Post Processing with R3F](https://post-processing-with-r3f.vercel.app/)
+
+[Fun and Simple Portfolio with R3F](https://fun-and-simple-portfolio-with-r3f.vercel.app/)
+
+[Physics with R3F](https://physics-with-r3f-one.vercel.app/)
+
+[Create a Game with R3F](https://create-a-game-with-r3f-iota.vercel.app/)
+
+
 ## Course link
 [Link](https://threejs-journey.com/#)
 
