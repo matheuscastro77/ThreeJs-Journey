@@ -80,7 +80,7 @@ You can find the files for each project in this same repository or in a separate
 
 [Debug with R3F](https://debug-a-r3f-application.vercel.app/)
 
-[Environment and Staging](https://environment-and-staging-with-r3f.vercel.app/)
+[Environment and Staging with R3F](https://environment-and-staging-with-r3f.vercel.app/)
 
 [Load Models with R3F](https://load-models-with-r3f.vercel.app/)
 
