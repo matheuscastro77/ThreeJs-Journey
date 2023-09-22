@@ -96,7 +96,7 @@ You can find the files for each project in this same repository or in a separate
 
 [Physics with R3F](https://physics-with-r3f-one.vercel.app/)
 
-[Create a Game with R3F](https://create-a-game-with-r3f-iota.vercel.app/)
+[Create a Game with R3F](https://marble-race-mtvc.vercel.app/)
 
 
 ## Course link
